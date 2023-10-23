@@ -10,6 +10,10 @@
     public enum Country
     {
         Australia,
+        Sweden,
+        Denmark,
+        Norway,
+        Finland,
 
     }
 }

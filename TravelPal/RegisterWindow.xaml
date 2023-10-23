@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="400" Background="MintCream">
+        Title="RegisterWindow"  Height="400" Width="300" Background="MintCream">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -22,11 +22,11 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="1" FontSize="54" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
+        <Label Grid.Column="1" Grid.Row="1" FontSize="54" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
 
         <TextBox Name="txtUsername" Grid.Column="1" Grid.Row="2"  Height="40" Width="200" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
         <TextBox Name="txtPassword" Grid.Column="1" Grid.Row="3"  Height="40" Width="200" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
-        <ComboBox Name="cbCountry" Grid.Column="1" Grid.Row="4" Height="40" Width="200" Background="MediumSlateBlue" Foreground="MediumSlateBlue"/>
-        <Button Name="btnRegister" Grid.Column="1" Grid.Row="5" Content="Register" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue"/>
+        <ComboBox Name="cbCountry" Grid.Column="1" Grid.Row="4" Height="40" Width="200" Background="MediumSlateBlue" Foreground="MediumSlateBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Name="btnRegister" Grid.Column="1" Grid.Row="5" Content="Register" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" Click="btnRegister_Click"/>
     </Grid>
 </Window>

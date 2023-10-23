@@ -14,9 +14,13 @@ namespace TravelPal
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
-            TravelsWindow travelsWindow = new TravelsWindow();
-            travelsWindow.Show();
-            Close();
+            if (Repos.UserManager.SignInUser(txtUsername.Text, txtPassword.Password))
+            {
+                TravelsWindow travelsWindow = new TravelsWindow();
+                travelsWindow.Show();
+                Close();
+            }
+
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
