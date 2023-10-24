@@ -123,26 +123,52 @@ namespace TravelPal
         //Sets the signed in user to the updated version of the user
         private void SetUserList()
         {
-            for (int i = 0; i < UserManager.Users.Count; i++)
+            if (UserManager.SignedInUIser is User)
             {
-                if (UserManager.Users[i].Username == UserManager.SignedInUIser.Username)
+                for (int i = 0; i < UserManager.Users.Count; i++)
                 {
-                    User currentUser = (User)UserManager.Users[i];
-                    for (int j = 0; j < currentUser.Travels.Count; j++)
+                    if (UserManager.Users[i].Username == UserManager.SignedInUIser.Username)
                     {
-                        if (currentUser.Travels[j] == Travel)
+                        User currentUser = (User)UserManager.Users[i];
+                        for (int j = 0; j < currentUser.Travels.Count; j++)
                         {
-                            currentUser.Travels[j] = NewTravel()!;
-                            UserManager.SignedInUIser = currentUser;
-                            break;
+                            if (currentUser.Travels[j] == Travel)
+                            {
+                                currentUser.Travels[j] = NewTravel()!;
+                                UserManager.SignedInUIser = currentUser;
+                                break;
+                            }
                         }
+
+
+
                     }
 
+                }
+            }
+            else if (UserManager.SignedInUIser is Admin)
+            {
+                for (int i = 0; i < UserManager.Users.Count; i++)
+                {
+                    if (UserManager.Users[i].Username == Travel.OwnedUser.Username)
+                    {
+                        User currentUser = (User)UserManager.Users[i];
+                        for (int j = 0; j < currentUser.Travels.Count; j++)
+                        {
+                            if (currentUser.Travels[j] == Travel)
+                            {
+                                currentUser.Travels[j] = NewTravel()!;
+                                break;
+                            }
+                        }
 
+
+
+                    }
 
                 }
-
             }
+
         }
         //Finds the trip you are editing and sets it to the edited version of the trip
         private void SetTravelsList()

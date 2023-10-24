@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TravelPal.Repos;
 
 namespace TravelPal.Models
 {
@@ -12,6 +13,7 @@ namespace TravelPal.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
+        public IUser OwnedUser { get; set; }
 
         public Travel(string destination, Country country, int travellers, List<PackingListItem> packingList, DateTime startDate, DateTime endDate)
         {
@@ -21,6 +23,11 @@ namespace TravelPal.Models
             PackingList = packingList;
             StartDate = startDate;
             EndDate = endDate;
+            if (UserManager.SignedInUIser is not Admin)
+            {
+                OwnedUser = (User)UserManager.SignedInUIser;
+            }
+
         }
 
         private int CalculateTravelDays()
