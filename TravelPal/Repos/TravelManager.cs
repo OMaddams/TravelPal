@@ -3,17 +3,17 @@ using TravelPal.Models;
 
 namespace TravelPal.Repos
 {
-    public class TravelManager
+    public static class TravelManager
     {
-        public static List<Travel> travels { get; set; }
+        public static List<Travel> Travels { get; set; } = new List<Travel>();
 
-        public void AddTravel(Travel travel)
+        public static void AddTravel(Travel travel)
         {
-
+            Travels.Add(travel);
         }
-        public void RemoveTravel(Travel travel)
+        public static void RemoveTravel(Travel travel)
         {
-
+            Travels.Remove(travel);
         }
     }
 }

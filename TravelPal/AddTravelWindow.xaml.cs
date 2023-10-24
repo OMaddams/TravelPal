@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using TravelPal.Models;
+using TravelPal.Repos;
 
 namespace TravelPal
 {
@@ -11,8 +12,8 @@ namespace TravelPal
     public partial class AddTravelWindow : Window
     {
         private List<PackingListItem> packinglist = new List<PackingListItem>();
-        private DateTime startDate = DateTime.MinValue;
-        private DateTime endDate = DateTime.MinValue;
+        public DateTime startDate = DateTime.MinValue;
+        public DateTime endDate = DateTime.MinValue;
         public AddTravelWindow()
         {
             InitializeComponent();
@@ -47,10 +48,10 @@ namespace TravelPal
         {
             if (EmptyFieldChecker())
             {
-                if (NewTravel != null)
+                if (NewTravel() != null)
                 {
-                    Repos.TravelManager.travels.Add(NewTravel()!);
-                    User currentUser = (User)Repos.UserManager.SignedInUIser;
+                    TravelManager.AddTravel(NewTravel()!);
+                    User currentUser = (User)UserManager.SignedInUIser;
                     currentUser.Travels.Add(NewTravel()!);
                     TravelsWindow travelsWindow = new TravelsWindow();
                     travelsWindow.Show();
@@ -115,6 +116,18 @@ namespace TravelPal
             PackingListItem newPackingListItem = new(txtLuggage.Text);
             packinglist.Add(newPackingListItem);
             txtLuggage.Text = "";
+        }
+
+        private void btnStartDate_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarWindow calendar = new("startDate", this);
+            calendar.Show();
+        }
+
+        private void btnEndDate_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarWindow calendar = new("endDate", this);
+            calendar.Show();
         }
     }
 }
