@@ -118,6 +118,7 @@ namespace TravelPal
             txtLuggage.Text = "";
         }
 
+        //TODO: Check if start and enddate is valid 
         private void btnStartDate_Click(object sender, RoutedEventArgs e)
         {
             CalendarWindow calendar = new("startDate", this);

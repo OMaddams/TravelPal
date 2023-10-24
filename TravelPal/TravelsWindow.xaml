@@ -36,7 +36,7 @@
         <ComboBox Name="cbUsers" Grid.Column="2" Grid.Row="5" Visibility="Hidden"  FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" />
 
         <Button Name="btnUser" Grid.Column="3" Grid.Row="2" Click="btnUser_Click" FontSize="24" Height="40" Width="200" Foreground="MediumSlateBlue" Background="MintCream" BorderBrush="Transparent" BorderThickness="0"/>
-        <Button Name="btnSignOut" Grid.Column="3" Grid.Row="5" Content="Sign out" Click="btnSignOut_Click" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" />
+        <Button Name="btnSignOut" Grid.Column="3" Grid.Row="5" Content="Sign out" Click="btnSignOut_Click"  Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24" />
 
     </Grid>
 </Window>

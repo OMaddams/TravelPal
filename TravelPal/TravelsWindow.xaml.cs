@@ -56,9 +56,19 @@ namespace TravelPal
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow();
-            travelDetailsWindow.Show();
-            Close();
+            if (lstAddedTrips.SelectedIndex != -1)
+            {
+                ListViewItem selectedItem = (ListViewItem)lstAddedTrips.SelectedItem;
+                Travel travelToView = (Travel)selectedItem.Tag;
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travelToView);
+                travelDetailsWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Select item to view first");
+            }
+
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)

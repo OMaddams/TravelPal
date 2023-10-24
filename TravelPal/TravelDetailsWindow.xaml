@@ -30,21 +30,22 @@
 
         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" FontSize="54" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
 
-        <ComboBox Name="cbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" />
-        <ComboBox Name="cbCountry" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" />
-        <TextBox Name="txtCity" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" />
-        <TextBox Name="txtTravelers" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" />
+        <ComboBox Name="cbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  IsEnabled="False"/>
+        <ComboBox Name="cbCountry" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+        <TextBox Name="txtCity" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Height="40" Width="200" IsEnabled="False" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
+        <TextBox Name="txtTravelers" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="40" Width="200" IsEnabled="False" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
 
-        <TextBox Name="txtDetails" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" />
-        <CheckBox Name="cbAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+        <TextBox Name="txtDetails" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Height="auto" Width="200" IsEnabled="False" Foreground="MediumSlateBlue" FontSize="12"  HorizontalContentAlignment="Center" TextWrapping="Wrap"/>
+        <CheckBox Name="cbAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" IsThreeState="False" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" IsEnabled="False" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
+        <Label Name="lblAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Content="All inclusive" Visibility="Hidden" IsEnabled="False"/>
 
-        <TextBox Name="txtLuggage" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" />
-        <Button Name="btnLuggageAdd" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Content="Add Luggage" />
+        <TextBox Name="txtLuggage" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Height="40" Width="200" IsEnabled="False" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center"/>
+        <Button Name="btnLuggageAdd" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Content="Add Luggage" Height="40" Width="200"  IsEnabled="False" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>
 
-        <CalendarButton Name="btnStartDate" Grid.Column="1" Grid.Row="9" Content="Start date" />
-        <CalendarButton Name="btnEndDate" Grid.Column="2" Grid.Row="9" Content="End date" />
+        <Button Name="btnStartDate" Grid.Column="1" Grid.Row="9" Content="Start date" Height="40"  IsEnabled="False" Foreground="MediumSlateBlue" Background="MintCream" FontSize="24"/>
+        <Button Name="btnEndDate" Grid.Column="2" Grid.Row="9" Content="End date" Height="40"  IsEnabled="False" Foreground="MediumSlateBlue" Background="MintCream" FontSize="24" />
 
-        <Button Name="btnSave" Grid.Column="1" Grid.Row="10" Content="Save" />
-        <Button Name="btnBack" Grid.Column="2" Grid.Row="10" Content="Back" />
+        <Button Name="btnSaveEdit" Grid.Column="1" Grid.Row="10" Content="Edit" Height="40"  Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>
+        <Button Name="btnBack" Grid.Column="2" Grid.Row="10" Content="Back" Height="40"  Foreground="MintCream" Background="MediumSlateBlue" FontSize="24" Click="btnBack_Click"/>
     </Grid>
 </Window>
