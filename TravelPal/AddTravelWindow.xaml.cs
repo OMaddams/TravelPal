@@ -11,7 +11,7 @@ namespace TravelPal
     /// </summary>
     public partial class AddTravelWindow : Window
     {
-        private List<PackingListItem> packinglist = new List<PackingListItem>();
+        private List<PackingListItem> Packinglist = new List<PackingListItem>();
         public DateTime startDate = DateTime.MinValue;
         public DateTime endDate = DateTime.MinValue;
         public AddTravelWindow()
@@ -93,13 +93,13 @@ namespace TravelPal
 
 
 
-                newTravel = new WorkTrip(city, country, travellers, packinglist, startDate, endDate, txtDetails.Text);
+                newTravel = new WorkTrip(city, country, travellers, Packinglist, startDate, endDate, txtDetails.Text);
                 return newTravel;
             }
             else if (cbType.SelectedIndex == 1)
             {
                 bool allInclusive = (bool)cbAllInclusive.IsChecked!;
-                newTravel = new Vacation(city, country, travellers, packinglist, startDate, endDate, allInclusive);
+                newTravel = new Vacation(city, country, travellers, Packinglist, startDate, endDate, allInclusive);
                 return newTravel;
             }
 
@@ -114,7 +114,7 @@ namespace TravelPal
                 return;
             }
             PackingListItem newPackingListItem = new(txtLuggage.Text);
-            packinglist.Add(newPackingListItem);
+            Packinglist.Add(newPackingListItem);
             txtLuggage.Text = "";
         }
 

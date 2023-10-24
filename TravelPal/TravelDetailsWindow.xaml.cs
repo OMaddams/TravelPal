@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using TravelPal.Models;
+using TravelPal.Repos;
 
 namespace TravelPal
 {
@@ -13,8 +15,11 @@ namespace TravelPal
         public Travel Travel { get; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
-        public TravelDetailsWindow(Travel travel)
+        private List<PackingListItem> Packinglist = new List<PackingListItem>();
+        private User UserToEdit { get; set; }
+        public TravelDetailsWindow(Travel travel, User user)
         {
+            UserToEdit = user;
             InitializeComponent();
             PopulateTypeCombobox();
             Travel = travel;
@@ -26,6 +31,8 @@ namespace TravelPal
 
         private void InitializeFields()
         {
+            Packinglist = Travel.PackingList;
+
             if (Travel is WorkTrip)
             {
                 WorkTrip workTrip = (WorkTrip)Travel;
@@ -46,8 +53,11 @@ namespace TravelPal
             cbCountry.SelectedValue = Travel.Country;
             txtCity.Text = Travel.Destination;
             txtTravelers.Text = Travel.Travellers.ToString();
-            btnStartDate.Content = Travel.StartDate;
-            btnEndDate.Content = Travel.EndDate;
+
+            startDate = Travel.StartDate;
+            endDate = Travel.EndDate;
+            btnStartDate.Content = DateOnly.FromDateTime(Travel.StartDate);
+            btnEndDate.Content = DateOnly.FromDateTime(Travel.EndDate);
 
         }
 
@@ -90,9 +100,95 @@ namespace TravelPal
             {
                 if (EmptyFieldChecker())
                 {
-
+                    EditTravel();
+                    TravelsWindow travelsWindow = new();
+                    travelsWindow.Show();
+                    Close();
                 }
             }
+        }
+
+        private void EditTravel()
+        {
+            if (NewTravel() != null)
+            {
+                SetTravelsList();
+                SetUserList();
+
+            }
+        }
+
+        //Finds the logged in user
+        //Finds the trip you want to edit in the list of trips 
+        //Sets the signed in user to the updated version of the user
+        private void SetUserList()
+        {
+            for (int i = 0; i < UserManager.Users.Count; i++)
+            {
+                if (UserManager.Users[i].Username == UserManager.SignedInUIser.Username)
+                {
+                    User currentUser = (User)UserManager.Users[i];
+                    for (int j = 0; j < currentUser.Travels.Count; j++)
+                    {
+                        if (currentUser.Travels[j] == Travel)
+                        {
+                            currentUser.Travels[j] = NewTravel()!;
+                            UserManager.SignedInUIser = currentUser;
+                            break;
+                        }
+                    }
+
+
+
+                }
+
+            }
+        }
+        //Finds the trip you are editing and sets it to the edited version of the trip
+        private void SetTravelsList()
+        {
+            for (int i = 0; i < TravelManager.Travels.Count; i++)
+            {
+                Travel currentTravel = TravelManager.Travels[i];
+                if (currentTravel.ToString() == Travel.ToString())
+                {
+                    TravelManager.Travels[i] = NewTravel()!;
+                    break;
+                }
+            }
+        }
+
+        private Travel? NewTravel()
+        {
+            Travel newTravel;
+            Country country = (Country)cbCountry.SelectedItem;
+            string city = txtCity.Text;
+            int travellers;
+            try
+            {
+                travellers = int.Parse(txtTravelers.Text);
+            }
+            catch (InvalidCastException)
+            {
+
+                MessageBox.Show("Number of travellers field can only contain numbers!", "Warning!");
+                return null;
+            }
+
+            if (cbType.SelectedIndex == 0)
+            {
+
+                newTravel = new WorkTrip(city, country, travellers, Packinglist, startDate, endDate, txtDetails.Text);
+                return newTravel;
+            }
+            else if (cbType.SelectedIndex == 1)
+            {
+                bool allInclusive = (bool)cbAllInclusive.IsChecked!;
+                newTravel = new Vacation(city, country, travellers, Packinglist, startDate, endDate, allInclusive);
+                return newTravel;
+            }
+
+            return null;
         }
 
         private void FlipFields()
@@ -106,6 +202,8 @@ namespace TravelPal
             txtLuggage.IsEnabled = true;
             btnStartDate.IsEnabled = true;
             btnEndDate.IsEnabled = true;
+            cbAllInclusive.IsEnabled = true;
+
 
             btnEndDate.Background = Brushes.MediumSlateBlue;
             btnEndDate.Foreground = Brushes.MintCream;

@@ -61,7 +61,7 @@ namespace TravelPal
             {
                 ListViewItem selectedItem = (ListViewItem)lstAddedTrips.SelectedItem;
                 Travel travelToView = (Travel)selectedItem.Tag;
-                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travelToView);
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travelToView, (User)UserManager.SignedInUIser);
                 travelDetailsWindow.Show();
                 Close();
             }
