@@ -30,21 +30,22 @@
 
         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" FontSize="54" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
 
-        <ComboBox Name="cbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <ComboBox Name="cbType" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cbType_SelectionChanged"/>
         <ComboBox Name="cbCountry" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <TextBox Name="txtCity" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Height="40" Width="200"/>
         <TextBox Name="txtTravelers" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Height="40" Width="200"/>
 
         <TextBox Name="txtDetails" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Height="40" Width="200"/>
-        <CheckBox Name="cbAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" Height="40" Width="200"/>
+        <CheckBox Name="cbAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" IsThreeState="False" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"  />
+        <Label Name="lblAllInclusive" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Content="All inclusive" Visibility="Hidden"/>
 
         <TextBox Name="txtLuggage" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Height="40" Width="200"/>
-        <Button Name="btnLuggageAdd" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Content="Add Luggage" Height="40" Width="200"/>
+        <Button Name="btnLuggageAdd" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Content="Add Luggage" Height="40" Width="200" Click="btnLuggageAdd_Click"/>
 
         <Button Name="btnStartDate" Grid.Column="1" Grid.Row="9" Content="Start date" Height="40"/>
         <Button Name="btnEndDate" Grid.Column="2" Grid.Row="9" Content="End date" Height="40" />
 
-        <Button Name="btnSave" Grid.Column="1" Grid.Row="10" Content="Save" Height="40" />
+        <Button Name="btnSave" Grid.Column="1" Grid.Row="10" Content="Save" Height="40" Click="btnSave_Click" />
         <Button Name="btnBack" Grid.Column="2" Grid.Row="10" Content="Back" Height="40" />
         
         
