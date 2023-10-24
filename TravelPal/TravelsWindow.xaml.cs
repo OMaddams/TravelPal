@@ -17,6 +17,7 @@ namespace TravelPal
             {
                 PopulateList((User)UserManager.SignedInUIser);
             }
+            btnUser.Content = UserManager.SignedInUIser.Username;
 
         }
 

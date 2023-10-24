@@ -7,7 +7,7 @@ namespace TravelPal.Repos
 {
     public static class UserManager
     {
-        public static List<IUser> Users { get; set; } = new List<IUser>() { new Admin("admin", "password", Country.Sweden), new User("user", "password", Country.Sweden, new List<Travel> { new Travel("Stockholm", Country.Sweden, 1, new List<PackingListItem> { }, DateTime.MinValue, DateTime.MinValue), new Travel("Copenhagen", Country.Denmark, 1, new List<PackingListItem> { }, DateTime.MinValue, DateTime.MinValue) }) };
+        public static List<IUser> Users { get; set; } = new List<IUser>() { new Admin("admin", "password", Country.Sweden), new User("user", "password", Country.Sweden, new List<Travel> { new Travel("Stockholm", Country.Sweden, 1, new List<PackingListItem> { }, DateTime.Now, DateTime.Now), new Travel("Copenhagen", Country.Denmark, 1, new List<PackingListItem> { }, DateTime.Now, DateTime.Now) }) };
         public static IUser SignedInUIser { get; set; }
 
         public static bool AddUser(IUser user)
