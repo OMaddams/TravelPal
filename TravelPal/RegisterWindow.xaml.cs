@@ -23,6 +23,11 @@ namespace TravelPal
                 MessageBox.Show("Please fill out all the fields", "Warning");
                 return;
             }
+            if (txtPassword.Text.Trim().Length <= 5)
+            {
+                MessageBox.Show("Password needs to be longer than 5 characters!", "Warning");
+                return;
+            }
 
             if (UserManager.AddUser(new User(txtUsername.Text, txtPassword.Text, (Country)cbCountry.SelectedValue)))
             {
