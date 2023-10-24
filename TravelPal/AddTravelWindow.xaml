@@ -46,7 +46,7 @@
         <Button Name="btnEndDate" Grid.Column="2" Grid.Row="9" Content="End date" Height="40" Click="btnEndDate_Click" />
 
         <Button Name="btnSave" Grid.Column="1" Grid.Row="10" Content="Save" Height="40" Click="btnSave_Click" />
-        <Button Name="btnBack" Grid.Column="2" Grid.Row="10" Content="Back" Height="40" />
+        <Button Name="btnBack" Grid.Column="2" Grid.Row="10" Content="Back" Height="40" Click="btnBack_Click" />
         
         
 

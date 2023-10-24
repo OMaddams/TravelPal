@@ -28,11 +28,11 @@
         
         <Label Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" FontSize="54" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
         
-        <ListView Name="lstAddedTrips" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4"/>
+        <ListView Name="lstAddedTrips" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" HorizontalContentAlignment="Center" FontSize="24" Foreground="MediumSlateBlue"/>
 
         <Button Name="btnAddTravel" Grid.Column="2" Grid.Row="2" Content="Add Travel" Click="btnAddTravel_Click" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue"/>
         <Button Name="btnDetails" Grid.Column="2" Grid.Row="3" Content="Details" Click="btnDetails_Click" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue"/>
-        <Button Name="btnRemove" Grid.Column="2" Grid.Row="4" Content="Remove" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue"/>
+        <Button Name="btnRemove" Grid.Column="2" Grid.Row="4" Content="Remove" FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" Click="btnRemove_Click"/>
         <ComboBox Name="cbUsers" Grid.Column="2" Grid.Row="5" Visibility="Hidden"  FontSize="24" Height="40" Width="200" Foreground="MintCream" Background="MediumSlateBlue" />
 
         <Button Name="btnUser" Grid.Column="3" Grid.Row="2" Click="btnUser_Click" FontSize="24" Height="40" Width="200" Foreground="MediumSlateBlue" Background="MintCream" BorderBrush="Transparent" BorderThickness="0"/>

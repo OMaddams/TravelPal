@@ -27,6 +27,10 @@ namespace TravelPal.Models
         {
             return 0;
         }
+        public virtual string GetInfo()
+        {
+            return Country.ToString();
+        }
 
     }
 
@@ -40,9 +44,9 @@ namespace TravelPal.Models
         }
 
 
-        public string GetInfo()
+        public override string GetInfo()
         {
-            return "";
+            return Country.ToString();
         }
     }
 
@@ -55,7 +59,7 @@ namespace TravelPal.Models
             AllInclusive = allInclusive;
         }
 
-        public string GetInfo()
+        public override string GetInfo()
         {
             return string.Empty;
         }

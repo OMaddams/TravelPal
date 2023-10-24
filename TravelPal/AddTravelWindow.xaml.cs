@@ -129,5 +129,16 @@ namespace TravelPal
             CalendarWindow calendar = new("endDate", this);
             calendar.Show();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Anything not saved will be lost, are you sure?", "Warning", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                TravelsWindow travelswindow = new();
+                travelswindow.Show();
+                Close();
+            }
+
+        }
     }
 }

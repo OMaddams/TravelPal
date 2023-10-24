@@ -25,6 +25,13 @@ namespace TravelPal.Models
             Password = password;
             Location = location;
         }
+        public User(string username, string password, Country location, List<Travel> travels)
+        {
+            Username = username;
+            Password = password;
+            Location = location;
+            Travels = travels;
+        }
     }
 
     public class Admin : IUser
