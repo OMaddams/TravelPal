@@ -48,7 +48,15 @@ namespace TravelPal
                 item.Content = travel.Country.ToString();
                 if (UserManager.SignedInUIser is Admin)
                 {
-                    item.Content += " " + travel.OwnedUser.Username;
+                    if (travel.OwnedUser != null)
+                    {
+                        item.Content += " " + travel.OwnedUser.Username;
+                    }
+                    else
+                    {
+                        item.Content += " user";
+                    }
+
                 }
                 lstAddedTrips.Items.Add(item);
             }

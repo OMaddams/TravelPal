@@ -214,7 +214,7 @@ namespace TravelPal
         {
             if (Enum.IsDefined(typeof(EuropeanCountry), UserManager.SignedInUIser.Location.ToString()))
             {
-                if (!Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()))
+                if (!Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()!))
                 {
                     TravelDocument travelDocument = new("Passport", true);
                     for (int i = 0; i < Packinglist.Count; i++)
@@ -229,7 +229,7 @@ namespace TravelPal
                     UpdateLuggageList();
 
                 }
-                if (Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()))
+                if (Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()!))
                 {
                     TravelDocument travelDocument = new("Passport", false);
                     for (int i = 0; i < Packinglist.Count; i++)
