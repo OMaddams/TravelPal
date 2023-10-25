@@ -171,5 +171,11 @@ namespace TravelPal
             }
             return 999;
         }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.ShowDialog();
+        }
     }
 }

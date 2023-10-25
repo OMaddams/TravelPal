@@ -1,0 +1,12 @@
+﻿<Window x:Class="TravelPal.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        Title="InfoWindow" Height="300" Width="350" Background="MediumSlateBlue" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <TextBlock Foreground="MintCream" MaxWidth="300" TextWrapping="Wrap" FontSize="24" FontFamily="Arial"  Text="This is TravelPal your one stop app to plan and catalouge trips.                                        All textfields in this app has tooltips telling you what to input in them.                                              We Hope you enjoy using our app " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
