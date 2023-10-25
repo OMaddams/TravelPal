@@ -113,9 +113,53 @@ namespace TravelPal
                 MessageBox.Show("Please fill out the luggage field before trying to add luggage");
                 return;
             }
+            if (txtLuggageAmount.Text == "" && cbTravelDocument.IsChecked == false)
+            {
+                AddLuggage();
+                return;
+            }
+            if (cbTravelDocument.IsChecked == false)
+            {
+                int amount;
+                try
+                {
+                    amount = int.Parse(txtLuggageAmount.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please enter a number in the luggage amount box", "Warning");
+                    return;
+                }
+                AddLuggage(amount);
+            }
+            if (cbTravelDocument.IsChecked == true)
+            {
+                TravelDocument newTravelDocument = new(txtLuggage.Text, (bool)cbRequired.IsChecked!);
+                Packinglist.Add(newTravelDocument);
+                txtLuggage.Text = "";
+                cbTravelDocument.IsChecked = false;
+                cbRequired.IsChecked = false;
+            }
+
+        }
+
+        private void AddLuggage()
+        {
             PackingListItem newPackingListItem = new(txtLuggage.Text);
             Packinglist.Add(newPackingListItem);
             txtLuggage.Text = "";
+        }
+        private void AddLuggage(int amount)
+        {
+            PackingListItem newPackingListItem = new(txtLuggage.Text, amount);
+            Packinglist.Add(newPackingListItem);
+            txtLuggage.Text = "";
+            txtLuggageAmount.Text = "";
+        }
+
+        private void UpdateLuggageList()
+        {
+            lstLuggage.Items.Clear();
         }
 
         //TODO: Check if start and enddate is valid 
@@ -140,6 +184,18 @@ namespace TravelPal
                 Close();
             }
 
+        }
+
+        private void cbTravelDocument_Checked(object sender, RoutedEventArgs e)
+        {
+            txtLuggageAmount.Visibility = Visibility.Hidden;
+            cbRequired.Visibility = Visibility.Visible;
+        }
+
+        private void cbTravelDocument_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtLuggageAmount.Visibility = Visibility.Visible;
+            cbRequired.Visibility = Visibility.Hidden;
         }
     }
 }
