@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TravelPal
 {
@@ -19,9 +8,82 @@ namespace TravelPal
     /// </summary>
     public partial class UserDetailsWindow : Window
     {
+        public bool ChangeValidated { get; set; }
         public UserDetailsWindow()
         {
             InitializeComponent();
+            PopulateCombobox();
+        }
+
+        private void PopulateCombobox()
+        {
+            cbCountry.ItemsSource = Enum.GetValues(typeof(Country));
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = "";
+
+            Country country = Repos.UserManager.SignedInUIser.Location;
+            if (cbCountry.SelectedIndex != -1)
+            {
+                country = (Country)cbCountry.SelectedValue;
+            }
+
+            if (txtPassword.Text.Trim() != "")
+            {
+                if (txtPassword.Text.Trim().Length <= 5)
+                {
+                    MessageBox.Show("Password needs to be longer than 5 characters!", "Warning");
+                    return;
+                }
+                if (txtPassword.Text == txtPasswordConfirmation.Text)
+                {
+                    password = txtPassword.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Passwords did not match", "warning");
+                    return;
+                }
+            }
+            if (password == "")
+            {
+                password = Repos.UserManager.SignedInUIser.Password;
+            }
+            if (username == "")
+            {
+                username = Repos.UserManager.SignedInUIser.Username;
+            }
+            ChangeValidated = false;
+
+            PasswordConfirmationWindow passwordConfirmationWindow = new(this);
+            passwordConfirmationWindow.ShowDialog();
+
+            if (ChangeValidated)
+            {
+                Repos.UserManager.SignedInUIser.Username = username;
+                Repos.UserManager.SignedInUIser.Password = password;
+                Repos.UserManager.SignedInUIser.Location = country;
+
+                TravelsWindow travelsWindow = new();
+                travelsWindow.Show();
+                Close();
+
+
+            }
+            else
+            {
+                return;
+            }
+
+
+
+
+
+
+
         }
     }
 }
