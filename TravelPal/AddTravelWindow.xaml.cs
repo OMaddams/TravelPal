@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using TravelPal.Models;
 using TravelPal.Repos;
 
@@ -139,6 +140,7 @@ namespace TravelPal
                 txtLuggage.Text = "";
                 cbTravelDocument.IsChecked = false;
                 cbRequired.IsChecked = false;
+                UpdateLuggageList();
             }
 
         }
@@ -148,6 +150,7 @@ namespace TravelPal
             PackingListItem newPackingListItem = new(txtLuggage.Text);
             Packinglist.Add(newPackingListItem);
             txtLuggage.Text = "";
+            UpdateLuggageList();
         }
         private void AddLuggage(int amount)
         {
@@ -155,11 +158,20 @@ namespace TravelPal
             Packinglist.Add(newPackingListItem);
             txtLuggage.Text = "";
             txtLuggageAmount.Text = "";
+            UpdateLuggageList();
         }
 
         private void UpdateLuggageList()
         {
             lstLuggage.Items.Clear();
+            foreach (PackingListItem item in Packinglist)
+            {
+                ListViewItem lstItem = new();
+                lstItem.Tag = item;
+                lstItem.Content = item.ToString();
+
+                lstLuggage.Items.Add(lstItem);
+            }
         }
 
         //TODO: Check if start and enddate is valid 
@@ -196,6 +208,68 @@ namespace TravelPal
         {
             txtLuggageAmount.Visibility = Visibility.Visible;
             cbRequired.Visibility = Visibility.Hidden;
+        }
+
+        private void cbCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Enum.IsDefined(typeof(EuropeanCountry), UserManager.SignedInUIser.Location.ToString()))
+            {
+                if (!Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()))
+                {
+                    TravelDocument travelDocument = new("Passport", true);
+                    for (int i = 0; i < Packinglist.Count; i++)
+                    {
+                        if (Packinglist[i].Name == "Passport")
+                        {
+                            Packinglist.RemoveAt(i);
+                            break;
+                        }
+                    }
+                    Packinglist.Add(travelDocument);
+                    UpdateLuggageList();
+
+                }
+                if (Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedValue.ToString()))
+                {
+                    TravelDocument travelDocument = new("Passport", false);
+                    for (int i = 0; i < Packinglist.Count; i++)
+                    {
+                        if (Packinglist[i].Name == "Passport")
+                        {
+                            Packinglist.RemoveAt(i);
+                            break;
+                        }
+                    }
+                    Packinglist.Add(travelDocument);
+                    UpdateLuggageList();
+                }
+            }
+            else if (!Enum.IsDefined(typeof(EuropeanCountry), UserManager.SignedInUIser.Location.ToString()))
+            {
+                TravelDocument travelDocument = new("Passport", true);
+                for (int i = 0; i < Packinglist.Count; i++)
+                {
+                    if (Packinglist[i].Name == "Passport")
+                    {
+                        Packinglist.RemoveAt(i);
+                        break;
+                    }
+                }
+                Packinglist.Add(travelDocument);
+                UpdateLuggageList();
+            }
+        }
+
+        private void lstLuggage_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ListViewItem listItem = (ListViewItem)lstLuggage.SelectedItem;
+            PackingListItem packingItem = (PackingListItem)listItem.Tag;
+
+            if (packingItem != null)
+            {
+                Packinglist.Remove(packingItem);
+                UpdateLuggageList();
+            }
         }
     }
 }

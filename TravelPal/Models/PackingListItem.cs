@@ -15,6 +15,10 @@
             Name = name;
             Count = 1;
         }
+        public override string ToString()
+        {
+            return $"{Name} - Quantity: {Count}";
+        }
 
 
     }
@@ -27,6 +31,16 @@
             IsRequired = required;
         }
 
+        public override string ToString()
+        {
+            string required = string.Empty;
+            if (IsRequired)
+            {
+                required = " - Required";
+            }
+
+            return $"{Name}{required}";
+        }
 
 
     }
