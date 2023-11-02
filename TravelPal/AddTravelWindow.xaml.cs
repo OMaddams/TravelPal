@@ -36,12 +36,14 @@ namespace TravelPal
                 txtDetails.Visibility = Visibility.Visible;
                 cbAllInclusive.Visibility = Visibility.Hidden;
                 lblAllInclusive.Visibility = Visibility.Hidden;
+                lblDetails.Visibility = Visibility.Visible;
             }
             else if (cbType.SelectedIndex == 1)
             {
                 txtDetails.Visibility = Visibility.Hidden;
                 cbAllInclusive.Visibility = Visibility.Visible;
                 lblAllInclusive.Visibility = Visibility.Visible;
+                lblDetails.Visibility = Visibility.Hidden;
             }
         }
 
@@ -270,6 +272,12 @@ namespace TravelPal
                 Packinglist.Remove(packingItem);
                 UpdateLuggageList();
             }
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow infoWindow = new InfoWindow();
+            infoWindow.ShowDialog();
         }
     }
 }
