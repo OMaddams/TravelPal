@@ -296,12 +296,14 @@ namespace TravelPal
                 txtDetails.Visibility = Visibility.Visible;
                 cbAllInclusive.Visibility = Visibility.Hidden;
                 lblAllInclusive.Visibility = Visibility.Hidden;
+                lblDetails.Visibility = Visibility.Visible;
             }
             else if (cbType.SelectedIndex == 1)
             {
                 txtDetails.Visibility = Visibility.Hidden;
                 cbAllInclusive.Visibility = Visibility.Visible;
                 lblAllInclusive.Visibility = Visibility.Visible;
+                lblDetails.Visibility = Visibility.Hidden;
             }
         }
 
