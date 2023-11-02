@@ -59,6 +59,10 @@ namespace TravelPal
             endDate = Travel.EndDate;
             btnStartDate.Content = DateOnly.FromDateTime(Travel.StartDate);
             btnEndDate.Content = DateOnly.FromDateTime(Travel.EndDate);
+            lblTravelDays.Content = "Total travel days ca: " + Travel.TravelDays.ToString();
+
+
+            lblUntilTravel.Content = Travel.UntilTravel <= 0 ? lblUntilTravel.Visibility = Visibility.Hidden : "Days until travel : " + Travel.UntilTravel.ToString();
 
         }
 

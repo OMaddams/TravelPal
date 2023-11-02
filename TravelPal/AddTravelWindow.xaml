@@ -26,6 +26,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
@@ -57,6 +58,8 @@
 
         <Button Name="btnStartDate" Grid.Column="1" Grid.Row="10" Content="Start date" Height="40" Click="btnStartDate_Click" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>
         <Button Name="btnEndDate" Grid.Column="2" Grid.Row="10" Content="End date" Height="40" Click="btnEndDate_Click" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>
+
+        
 
         <Button Name="btnSave" Grid.Column="1" Grid.Row="11" Content="Save" Height="40" Click="btnSave_Click" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>
         <Button Name="btnBack" Grid.Column="2" Grid.Row="11" Content="Back" Height="40" Click="btnBack_Click" Foreground="MintCream" Background="MediumSlateBlue" FontSize="24"/>

@@ -12,7 +12,8 @@ namespace TravelPal.Models
         public List<PackingListItem> PackingList { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int TravelDays { get; set; }
+        public double TravelDays { get; set; }
+        public double UntilTravel { get; set; }
         public IUser OwnedUser { get; set; }
 
         public Travel(string destination, Country country, int travellers, List<PackingListItem> packingList, DateTime startDate, DateTime endDate)
@@ -23,6 +24,8 @@ namespace TravelPal.Models
             PackingList = packingList;
             StartDate = startDate;
             EndDate = endDate;
+            TravelDays = CalculateTravelDays();
+            UntilTravel = CalculateUntilTravel();
             if (UserManager.SignedInUIser is not Admin)
             {
                 OwnedUser = (User)UserManager.SignedInUIser;
@@ -30,9 +33,15 @@ namespace TravelPal.Models
 
         }
 
-        private int CalculateTravelDays()
+        public double CalculateTravelDays()
         {
-            return 0;
+            TimeSpan travelDays = EndDate - StartDate;
+            return Math.Round(travelDays.TotalDays);
+        }
+        public double CalculateUntilTravel()
+        {
+            TimeSpan timespan = StartDate - DateTime.Now;
+            return Math.Round(timespan.TotalDays, 1);
         }
         public virtual string GetInfo()
         {
