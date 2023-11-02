@@ -39,7 +39,7 @@ namespace TravelPal.Models
             return Country.ToString();
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return Destination.ToString() + Country.ToString() + Travellers.ToString() + DateOnly.FromDateTime(StartDate).ToString() + DateOnly.FromDateTime(EndDate).ToString();
         }
