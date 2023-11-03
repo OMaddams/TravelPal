@@ -30,7 +30,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" FontSize="52" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
+        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" FontSize="50" FontFamily="arial" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="MediumSlateBlue" Content="TravelPal"/>
         <Button Name="btnInfo" Grid.Column="2" Grid.Row="1" Width="40" Height="40" Content="i" FontFamily="Arial" FontSize="24" HorizontalAlignment="Right" Foreground="MintCream" Background="MediumSlateBlue" Click="btnInfo_Click" />
 
         <Label Content="Trip type" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="MediumSlateBlue"/>
@@ -40,8 +40,8 @@
         <Label Name="lblDetails" Content="Details" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="MediumSlateBlue"/>
         
 
-        <ComboBox Name="cbType" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cbType_SelectionChanged" ToolTip="Type of trip"/>
-        <ComboBox Name="cbCountry" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cbCountry_SelectionChanged" ToolTip="Destination Country"/>
+        <ComboBox Name="cbType" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="1" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cbType_SelectionChanged" ToolTip="Type of trip" Foreground="MediumSlateBlue"/>
+        <ComboBox Name="cbCountry" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1" Height="40" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="cbCountry_SelectionChanged" ToolTip="Destination Country" Foreground="MediumSlateBlue"/>
         <TextBox Name="txtCity" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="1" Height="40" Width="200" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center" ToolTip="Destination City"/>
         <TextBox Name="txtTravelers" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" Height="40" Width="200" Foreground="MediumSlateBlue" FontSize="24" HorizontalContentAlignment="Center" ToolTip="Number of travelers"/>
 
