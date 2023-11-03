@@ -90,6 +90,16 @@ namespace TravelPal
                 MessageBox.Show("Number of travellers field can only contain numbers!", "Warning!");
                 return null;
             }
+            if ((startDate - endDate).TotalDays < 0)
+            {
+                MessageBox.Show("Sadly you cant travel to the past, enddate needs to come after startdate", "Warning");
+                return null;
+            }
+            if ((startDate - DateTime.Now).TotalDays < 0)
+            {
+                MessageBox.Show("This startdate has already passed", "Warning");
+                return null;
+            }
 
             if (cbType.SelectedIndex == 0)
             {
